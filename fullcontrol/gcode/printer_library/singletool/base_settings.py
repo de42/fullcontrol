@@ -5,7 +5,7 @@ default_initial_settings = {
     "extrusion_width": 0.4,
     "extrusion_height": 0.2,
     "nozzle_temp": 210,
-    "bed_temp": 40,
+    "bed_temp": 60,
     "fan_percent": 100,
     "print_speed_percent": 100,
     "material_flow_percent": 100,
@@ -19,6 +19,7 @@ default_initial_settings = {
         "unretract": "G11 ; unretract",
         "absolute_coords": "G90 ; absolute coordinates",
         "relative_coords": "G91 ; absolute coordinates",
-        "units_mm": "G21 ; set units to millimeters"
+        "units_mm": "G21 ; set units to millimeters",
+        "mesh_bed_probe": '; Enable Mesh Compensation\nG29 S1 P"heightmap.csv"\nM376 H3'
     }
 }

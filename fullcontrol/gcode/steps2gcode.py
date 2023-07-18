@@ -23,8 +23,7 @@ def gcode(steps: list, gcode_controls: GcodeControls = GcodeControls()):
     gc = os.linesep.join(state.gcode)
 
     if gcode_controls.save_as != None:
-        filename = gcode_controls.save_as
-        filename += datetime.now().strftime("__%d-%m-%Y__%H-%M-%S.gcode") if gcode_controls.include_date == True else '.gcode'
-        open(filename, 'w').write(gc)
-
-    return gc
+        filename = gcode_controls.save_as + datetime.now().strftime("__%d-%m-%Y__%H-%M-%S.gcode")
+        open(filename, 'w', newline='').write(gc)
+    else:
+        return gc

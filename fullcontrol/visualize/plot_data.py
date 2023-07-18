@@ -33,13 +33,9 @@ class PlotData(BaseModel):
     def add_path(self, state: 'State', plot_data: 'PlotData', plot_controls: PlotControls):
         self.paths.append(Path())
         state.point.update_color(state, plot_data, plot_controls)
-        self.paths[-1].add_point(state)
+        self.paths[-1].add_point(state.point)
         # self.paths[-1].colors.add_colors(state, plot_data)
         self.paths[-1].extruder = Extruder(on=state.extruder.on)
 
     def add_annotation(self, annotation: 'PlotAnnotation'):
         self.annotations.append({'label': annotation.label, 'x': annotation.point.x, 'y': annotation.point.y, 'z': annotation.point.z})
-
-    def cleanup(self):
-        'remove single-point paths (e.g. caused by an Extruder at the end of the list or similar)'
-        self.paths = [path for path in self.paths if len(path.xvals)>1] 
